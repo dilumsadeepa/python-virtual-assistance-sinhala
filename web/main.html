@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- jQuery library -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/responsivevoice.js"></script>
+
+    <script type="text/javascript" src="/eel.js"></script>
+
+    <title>SERA  virtual assisstan</title>
+    <script type="text/javascript">
+
+      responsiveVoice.speak('මම දිලුම්', 'Sinhala');
+
+      function st() {
+        startDictation()
+        document.getElementById('li').innerHTML = 'Listening... ';
+      }
+
+      function gv() {
+        var data = document.getElementById('transcript').value;
+        eel.main(data)(vi);
+
+      }
+
+      function startDictation() {
+
+    		if (window.hasOwnProperty('webkitSpeechRecognition')) {
+                /*document.getElementById('transcript').innerHTML = "listning...."*/
+    			var recognition = new webkitSpeechRecognition();
+
+    			recognition.continuous = false;
+    			recognition.interimResults = false;
+
+    			recognition.lang = "si";
+    			recognition.start();
+
+    			recognition.onresult = function(e) {
+    				var re = document.getElementById('transcript').value
+    																 = e.results[0][0].transcript;
+    				recognition.stop();
+            console.log(re);
+            var text = re.toLowerCase();
+            gv();
+    				//document.getElementById('labnol').submit();
+    			};
+
+    			recognition.onerror = function(e) {
+    				recognition.stop();
+    			}
+
+    		}
+    	}
+
+    	function vi(text){
+
+    	   responsiveVoice.speak(text,'si');
+           document.getElementById('result').innerHTML=text;
+    	   document.getElementById('transcript').value = "";
+    	   document.getElementById('li').innerHTML = '';
+           console.log(text);
+
+    	}
+
+      function mainrun(text) {
+        if (text.includes("search", 0)) {
+          var res = text.replace("search", "");
+          console.log(res);
+          window.open("https://www.google.com/search?q="+res, "_blank");
+        }
+        else if (text.includes("go", 0)) {
+          var res = text.replace("search", "");
+          console.log(res);
+          window.open("https://www.google.com/search?q="+res, "_blank");
+        }
+        else {
+          document.getElementById('labnol').submit();
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+
+    <div class="container-fluid bg-dark">
+      <br><br><br><br>
+      <div class="row">
+
+        <div class="col-sm-2">
+
+        </div>
+
+        <div class="col-sm-6 bg-dark">
+          <br>
+          <lable id="li" class="in"></lable>
+            <div class="form-group">
+              <input type="text" class="ti form-control" name="q" id="transcript" placeholder="Click Mic and spaek" />
+
+            </div>
+
+
+
+        </div>
+        <div class="col-sm-2">
+          <br>
+          <button type="button" name="button" class="btn btn-info" onclick="gv()">search</button>
+        </div>
+        <div class="col-sm-2">
+          <img onclick="st()" src="img/mic.png" class="mi rounded-circle img-fluid" />
+        </div>
+      </div>
+
+
+    </div>
+    <div class="container bg-dark">
+      <div class="row">
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-8">
+          <h3 id="result" style="color:white;"></h3>
+
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+      </div>
+    </div>
+
+
+    <style media="screen">
+      .mi{
+        width: 60px;
+        height: 60px;
+      }
+      .in{
+      color:white;
+      }
+    </style>
+
+  </body>
+</html>

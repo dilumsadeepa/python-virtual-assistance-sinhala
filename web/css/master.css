@@ -1,0 +1,22 @@
+.main-box{
+  width: 100%;
+  height: 100vh;
+  /*background-image: url('../img/bac2.jpg');*/
+  background: black;
+
+}
+
+.c-box{
+  top: 80%;
+  left: 10%;
+  transform: translateY('-80%');
+
+}
+
+.clock {
+    color: #17D4FE;
+    font-size: 60px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+
+}

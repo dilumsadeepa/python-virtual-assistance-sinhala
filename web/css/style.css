@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.p-m{
+  top: 50%;
+  transform: translateY(50%);
+  visibility: hidden;
+}
+
+.main{
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 500px;
+}
+
+.bo{
+  width: 100%;
+  height: 100vh;
+}
+
+.Box{
+	position:absolute;
+	display:flex;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.Box span{
+	width:10px;
+	height:10px;
+	border-radius:50%;
+	margin:20px;
+	animation:Loading 1.6s ease-in-out infinite;
+	transform-style:preserve-3d;
+	transform-origin:center;
+}
+.Box span:first-of-type{
+	background-color:#eb3b5a;
+	animation-delay:0s;
+	box-shadow:0px 0px 10px #eb3b5a;
+}
+.Box span:nth-of-type(2){
+	background-color:#2d98da;
+	animation-delay:.2s;
+	box-shadow:0px 0px 10px #2d98da;
+}
+.Box span:nth-of-type(3){
+	background-color:#f7b731;
+	animation-delay:.4s;
+	box-shadow:0px 0px 10px #f7b731;
+}
+.Box span:nth-of-type(4){
+	background-color:#218c74;
+	animation-delay:.6s;
+	box-shadow:0px 0px 10px #218c74;
+}
+.Box span:nth-of-type(5){
+	background-color:#474787;
+	animation-delay:.8s;
+	box-shadow:0px 0px 10px #474787;
+}
+.Box span:last-of-type{
+	background-color:#fa8231;
+	animation-delay:1s;
+	box-shadow:0px 0px 10px #fa8231;
+}
+
+@keyframes Loading{
+
+	0%, 40%, 100%{
+		transform:scale(1);
+	}
+	20%{
+		transform:scale(5);
+	}
+
+}
